@@ -120,6 +120,11 @@
   h1{
     font-family:var(--display); font-weight:600; font-size:clamp(2.4rem, 4.6vw, 3.6rem);
     line-height:1.04; letter-spacing:-0.015em; margin:0 0 22px;
+    animation:heroIn 0.7s ease both;
+  }
+  @keyframes heroIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
   }
   h1 em{font-style:italic; color:var(--teal); font-weight:500;}
 
@@ -143,6 +148,35 @@
 
   .hero-footnote{
     font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); opacity:0.75;
+  }
+
+  /* Marquee ticker */
+  .ticker-wrap{
+    margin-top:44px;
+    background:var(--navy);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:13px 0;
+    border-top:1px solid rgba(238,240,229,0.1);
+    border-bottom:1px solid rgba(238,240,229,0.1);
+  }
+  .ticker-track{
+    display:inline-flex;
+    animation:tickerScroll 26s linear infinite;
+  }
+  @keyframes tickerScroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .ticker-item{
+    font-family:var(--mono); font-size:0.82rem; color:rgba(238,240,229,0.75);
+    padding:0 28px; display:inline-flex; align-items:center; gap:8px;
+    border-right:1px solid rgba(238,240,229,0.15);
+  }
+  .ticker-item b{color:var(--gold); font-weight:600; letter-spacing:0.02em;}
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+    .ticker-wrap{overflow-x:auto;}
   }
 
   /* Dispatch board card */
@@ -193,6 +227,19 @@
     letter-spacing:-0.01em; margin:0 0 14px; line-height:1.12;
   }
   .section-head p{color:var(--ink-soft); font-size:1.02rem; margin:0;}
+
+  .section-eyebrow-row{display:flex; align-items:center; gap:14px; margin-bottom:12px;}
+  .section-eyebrow-row .section-eyebrow{margin-bottom:0;}
+  .badge-247{
+    font-family:var(--mono); font-size:0.76rem; font-weight:700; letter-spacing:0.06em;
+    background:var(--emergency); color:#fff; padding:4px 11px; border-radius:100px;
+    display:inline-flex; align-items:center;
+  }
+
+  .research-highlight{
+    position:relative;
+    border-top:3px solid var(--gold);
+  }
 
   /* ---------- SERVICE TICKETS GRID ---------- */
   .service-grid{
@@ -345,8 +392,8 @@
       Insta Health World
     </div>
     <nav class="links" aria-label="Primary">
-      <a href="#services">Home Care</a>
       <a href="#how">How it works</a>
+      <a href="#services">Doorstep Care</a>
       <a href="#research">Research Support</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -370,9 +417,60 @@
       <div class="hero-footnote">DISPATCH LINE OPEN 24 / 7 &nbsp;·&nbsp; VERIFIED DOCTORS & NURSES ONLY</div>
     </div>
   </div>
+
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><b>DOC·01</b> Doctor on call</span>
+      <span class="ticker-item"><b>AMB·02</b> Ambulance on call</span>
+      <span class="ticker-item"><b>NUR·03</b> Nurse on call</span>
+      <span class="ticker-item"><b>HOM·04</b> Home care services</span>
+      <span class="ticker-item"><b>INJ·05</b> Injection at home</span>
+      <span class="ticker-item"><b>LAB·06</b> Lab test at home</span>
+      <span class="ticker-item"><b>SET·07</b> Hospital setup at home</span>
+      <span class="ticker-item"><b>VID·08</b> Video consultation</span>
+      <span class="ticker-item"><b>DOC·01</b> Doctor on call</span>
+      <span class="ticker-item"><b>AMB·02</b> Ambulance on call</span>
+      <span class="ticker-item"><b>NUR·03</b> Nurse on call</span>
+      <span class="ticker-item"><b>HOM·04</b> Home care services</span>
+      <span class="ticker-item"><b>INJ·05</b> Injection at home</span>
+      <span class="ticker-item"><b>LAB·06</b> Lab test at home</span>
+      <span class="ticker-item"><b>SET·07</b> Hospital setup at home</span>
+      <span class="ticker-item"><b>VID·08</b> Video consultation</span>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="services">
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow-row">
+        <span class="section-eyebrow">How it works</span>
+        <span class="badge-247">24 / 7</span>
+      </div>
+      <h2>From call to care, in three steps.</h2>
+      <p>Every hour, every day of the year — the dispatch line never closes.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Call or book</h3>
+        <p>Call the dispatch line or send your request with your address and what you need.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>A professional is dispatched</h3>
+        <p>We assign a verified doctor, nurse, or ambulance nearest to you and confirm your booking.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Care, at your doorstep</h3>
+        <p>Your care arrives at your home — tracked, on time, and handled with full professionalism.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="services">
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow">Doorstep services</div>
@@ -434,7 +532,43 @@
   </div>
 </section>
 
-<section class="section alt">
+<section class="section research-highlight" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">For doctors & researchers</div>
+      <h2>Support beyond the bedside.</h2>
+      <p>Alongside patient care, we support clinicians and medical students with the academic work that comes with practicing medicine.</p>
+    </div>
+    <div class="journal-grid">
+      <div class="journal-card">
+        <span class="journal-tag">Case discussion</span>
+        <h3>Case report discussion</h3>
+        <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
+      </div>
+      <div class="journal-card">
+        <span class="journal-tag">Research writing</span>
+        <h3>Proposal writing support</h3>
+        <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
+      </div>
+      <div class="journal-card">
+        <span class="journal-tag">Publication</span>
+        <h3>Manuscript publication support</h3>
+        <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="trust-strip">
+    <div class="trust-item"><strong>24 / 7</strong>Dispatch line open every day, all year</div>
+    <div class="trust-item"><strong>Verified</strong>Every doctor & nurse checked before dispatch</div>
+    <div class="trust-item"><strong>Doorstep</strong>Every service delivered at your address</div>
+    <div class="trust-item"><strong>Confidential</strong>Your records and consultations stay private</div>
+  </div>
+</div>
+
+<section class="section alt" id="live">
   <div class="wrap">
     <div class="section-head" style="margin-bottom:32px;">
       <div class="section-eyebrow">Right now</div>
@@ -477,67 +611,6 @@
   </div>
 </section>
 
-<section class="section" id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">How it works</div>
-      <h2>From call to care, in three steps.</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Call or book</h3>
-        <p>Call the dispatch line or send your request with your address and what you need.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>A professional is dispatched</h3>
-        <p>We assign a verified doctor, nurse, or ambulance nearest to you and confirm your booking.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Care, at your doorstep</h3>
-        <p>Your care arrives at your home — tracked, on time, and handled with full professionalism.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="research">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">For doctors & researchers</div>
-      <h2>Support beyond the bedside.</h2>
-      <p>Alongside patient care, we support clinicians and medical students with the academic work that comes with practicing medicine.</p>
-    </div>
-    <div class="journal-grid">
-      <div class="journal-card">
-        <span class="journal-tag">Case discussion</span>
-        <h3>Case report discussion</h3>
-        <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
-      </div>
-      <div class="journal-card">
-        <span class="journal-tag">Research writing</span>
-        <h3>Proposal writing support</h3>
-        <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
-      </div>
-      <div class="journal-card">
-        <span class="journal-tag">Publication</span>
-        <h3>Manuscript publication support</h3>
-        <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <div class="trust-strip">
-    <div class="trust-item"><strong>24 / 7</strong>Dispatch line open every day, all year</div>
-    <div class="trust-item"><strong>Verified</strong>Every doctor & nurse checked before dispatch</div>
-    <div class="trust-item"><strong>Doorstep</strong>Every service delivered at your address</div>
-    <div class="trust-item"><strong>Confidential</strong>Your records and consultations stay private</div>
-  </div>
-</div>
 
 <section class="cta-section" id="contact">
   <div class="wrap cta-grid">
