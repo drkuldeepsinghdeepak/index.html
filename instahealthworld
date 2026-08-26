@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta Health World — Healthcare, dispatched to your door</title>
+<meta name="description" content="Doctor on call, ambulance on call, nurse on call, home care, lab tests and hospital setup at home — dispatched across the city, plus research and publication support for medical professionals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF0E5;
+    --paper-dim:#E4E7D9;
+    --ink:#131F1B;
+    --ink-soft:#3C463F;
+    --navy:#1C2B3E;
+    --navy-soft:#2A3E56;
+    --emergency:#C23B22;
+    --emergency-dim:#A6321C;
+    --teal:#2E6F5E;
+    --teal-soft:#DCE7E0;
+    --gold:#C99A3E;
+    --line: rgba(19,31,27,0.14);
+    --line-strong: rgba(19,31,27,0.28);
+    --radius: 2px;
+    --display: 'Fraunces', serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--display); font-weight:600; font-size:1.28rem;
+    letter-spacing:-0.01em;
+  }
+  .brand-mark{
+    width:30px; height:30px; border-radius:50%;
+    background:var(--navy);
+    position:relative;
+    flex:none;
+  }
+  .brand-mark::before, .brand-mark::after{
+    content:''; position:absolute; background:var(--paper);
+  }
+  .brand-mark::before{ width:14px; height:2.4px; top:50%; left:50%; transform:translate(-50%,-50%); }
+  .brand-mark::after{ width:2.4px; height:14px; top:50%; left:50%; transform:translate(-50%,-50%); }
+
+  nav.links{display:flex; gap:28px; font-size:0.94rem; font-weight:500;}
+  nav.links a{text-decoration:none; opacity:0.78; transition:opacity 0.15s;}
+  nav.links a:hover{opacity:1;}
+
+  .call-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--emergency); color:#fff;
+    padding:10px 18px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:0.92rem;
+    font-family:var(--mono); letter-spacing:0.02em;
+    transition:background 0.15s;
+    white-space:nowrap;
+  }
+  .call-btn:hover{background:var(--emergency-dim);}
+  .call-btn .dot{
+    width:7px; height:7px; border-radius:50%; background:#fff;
+    animation:pulse 1.6s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--ink); margin:5px 0;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO / DISPATCH BOARD ---------- */
+  .hero{
+    padding:64px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--emergency); font-weight:600; margin-bottom:18px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--emergency); display:inline-block;}
+
+  h1{
+    font-family:var(--display); font-weight:600; font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height:1.04; letter-spacing:-0.015em; margin:0 0 22px;
+  }
+  h1 em{font-style:italic; color:var(--teal); font-weight:500;}
+
+  .hero p.lede{
+    font-size:1.1rem; color:var(--ink-soft); max-width:46ch; margin:0 0 30px;
+  }
+
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .btn-primary{
+    background:var(--navy); color:#fff; padding:13px 24px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:0.96rem; display:inline-block;
+    transition:background 0.15s;
+  }
+  .btn-primary:hover{background:var(--navy-soft);}
+  .btn-ghost{
+    border:1px solid var(--line-strong); color:var(--ink); padding:12px 24px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:0.96rem; display:inline-block;
+    transition:border-color 0.15s, background 0.15s;
+  }
+  .btn-ghost:hover{border-color:var(--ink); background:rgba(19,31,27,0.04);}
+
+  .hero-footnote{
+    font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); opacity:0.75;
+  }
+
+  /* Dispatch board card */
+  .board{
+    background:var(--navy); color:var(--paper);
+    border-radius:4px; overflow:hidden;
+    box-shadow:0 22px 50px -20px rgba(28,43,62,0.55);
+  }
+  .board-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px; border-bottom:1px solid rgba(238,240,229,0.14);
+    font-family:var(--mono); font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:rgba(238,240,229,0.6);
+  }
+  .board-head .live{display:flex; align-items:center; gap:7px; color:#8FCBA6;}
+  .board-head .live .dot{width:6px; height:6px; border-radius:50%; background:#8FCBA6; animation:pulse 1.6s infinite;}
+  .board-list{padding:8px 0;}
+  .ticket{
+    display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center;
+    padding:14px 20px; border-bottom:1px solid rgba(238,240,229,0.08);
+    font-size:0.92rem;
+    opacity:0; transform:translateY(6px);
+    animation:ticketIn 0.5s ease forwards;
+  }
+  .ticket:last-child{border-bottom:none;}
+  .ticket .code{
+    font-family:var(--mono); font-size:0.76rem; color:var(--gold); font-weight:600; letter-spacing:0.03em;
+  }
+  .ticket .desc{color:rgba(238,240,229,0.92);}
+  .ticket .status{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em;
+    padding:4px 9px; border-radius:100px; white-space:nowrap;
+  }
+  .status.enroute{background:rgba(143,203,166,0.16); color:#8FCBA6;}
+  .status.dispatched{background:rgba(201,154,62,0.18); color:var(--gold);}
+  @keyframes ticketIn{to{opacity:1; transform:translateY(0);}}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:76px 0;}
+  .section.alt{background:var(--paper-dim);}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-eyebrow{
+    font-family:var(--mono); font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--teal); font-weight:600; margin-bottom:12px;
+  }
+  h2{
+    font-family:var(--display); font-weight:600; font-size:clamp(1.7rem,3vw,2.3rem);
+    letter-spacing:-0.01em; margin:0 0 14px; line-height:1.12;
+  }
+  .section-head p{color:var(--ink-soft); font-size:1.02rem; margin:0;}
+
+  /* ---------- SERVICE TICKETS GRID ---------- */
+  .service-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+    background:var(--line-strong);
+    border:1px solid var(--line-strong);
+  }
+  @media (max-width:900px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .service-grid{grid-template-columns:1fr;} }
+
+  .service-card{
+    background:var(--paper);
+    padding:26px 22px 24px;
+    position:relative;
+    transition:background 0.15s;
+  }
+  .service-grid.alt-bg .service-card{background:var(--paper-dim);}
+  .service-card:hover{background:var(--teal-soft);}
+  .service-code{
+    font-family:var(--mono); font-size:0.74rem; color:var(--emergency); font-weight:600;
+    letter-spacing:0.04em; margin-bottom:14px; display:block;
+  }
+  .service-card h3{
+    font-family:var(--display); font-size:1.16rem; font-weight:600; margin:0 0 8px; letter-spacing:-0.005em;
+  }
+  .service-card p{
+    font-size:0.9rem; color:var(--ink-soft); margin:0 0 16px; line-height:1.5;
+  }
+  .service-card .req{
+    font-size:0.82rem; font-weight:600; text-decoration:none; color:var(--navy);
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .service-card .req::after{content:'→'; transition:transform 0.15s;}
+  .service-card:hover .req::after{transform:translateX(3px);}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:1px solid var(--line-strong);
+  }
+  @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    padding:32px 30px 32px 0;
+    border-right:1px solid var(--line);
+  }
+  .step:last-child{border-right:none;}
+  @media (max-width:760px){
+    .step{border-right:none; border-bottom:1px solid var(--line); padding:26px 0;}
+    .step:last-child{border-bottom:none;}
+  }
+  .step-num{
+    font-family:var(--mono); font-size:0.82rem; color:var(--teal); font-weight:600; margin-bottom:14px;
+  }
+  .step h3{font-family:var(--display); font-size:1.14rem; font-weight:600; margin:0 0 8px;}
+  .step p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+
+  /* ---------- RESEARCH SUPPORT (journal styling) ---------- */
+  .journal-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  @media (max-width:860px){ .journal-grid{grid-template-columns:1fr;} }
+  .journal-card{
+    background:var(--navy); color:var(--paper);
+    padding:30px 26px;
+    border-radius:3px;
+  }
+  .journal-tag{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:16px; display:block;
+  }
+  .journal-card h3{
+    font-family:var(--display); font-weight:600; font-size:1.18rem; margin:0 0 10px;
+  }
+  .journal-card p{
+    font-size:0.9rem; color:rgba(238,240,229,0.75); margin:0; line-height:1.55;
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:0;
+    border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong);
+  }
+  .trust-item{
+    flex:1 1 220px;
+    padding:22px 24px;
+    border-right:1px solid var(--line);
+    font-family:var(--mono); font-size:0.86rem; color:var(--ink-soft);
+  }
+  .trust-item:last-child{border-right:none;}
+  .trust-item strong{display:block; font-family:var(--body); font-size:1.4rem; color:var(--ink); font-weight:700; margin-bottom:4px;}
+
+  /* ---------- CONTACT / CTA ---------- */
+  .cta-section{
+    background:var(--navy); color:var(--paper); padding:80px 0;
+  }
+  .cta-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:start;}
+  @media (max-width:860px){ .cta-grid{grid-template-columns:1fr;} }
+  .cta-section h2{color:var(--paper);}
+  .cta-section .section-eyebrow{color:#8FCBA6;}
+  .cta-section p{color:rgba(238,240,229,0.72); font-size:1.02rem; max-width:44ch;}
+
+  .contact-list{list-style:none; margin:28px 0 0; padding:0;}
+  .contact-list li{
+    padding:16px 0; border-top:1px solid rgba(238,240,229,0.14);
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .contact-list li:last-child{border-bottom:1px solid rgba(238,240,229,0.14);}
+  .contact-list .label{font-family:var(--mono); font-size:0.78rem; color:rgba(238,240,229,0.55); letter-spacing:0.05em; text-transform:uppercase;}
+  .contact-list .value{font-size:1.02rem; font-weight:600;}
+  .contact-list a.value{text-decoration:none;}
+  .contact-list a.value:hover{text-decoration:underline;}
+
+  .cta-panel{
+    background:rgba(238,240,229,0.06); border:1px solid rgba(238,240,229,0.16);
+    padding:30px 28px; border-radius:3px;
+  }
+  .cta-panel .call-btn{width:100%; justify-content:center; padding:15px; font-size:1rem;}
+  .cta-panel p.note{font-size:0.84rem; color:rgba(238,240,229,0.6); margin:14px 0 0; text-align:center;}
+  .whatsapp-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; background:transparent; border:1px solid rgba(238,240,229,0.3); color:var(--paper);
+    padding:13px; border-radius:var(--radius); text-decoration:none; font-weight:600; font-size:0.94rem;
+    margin-top:12px; transition:background 0.15s;
+  }
+  .whatsapp-btn:hover{background:rgba(238,240,229,0.08);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:34px 0; border-top:1px solid var(--line);}
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+    font-size:0.82rem; color:var(--ink-soft);
+  }
+  footer .brand{font-size:1rem;}
+  .footer-links{display:flex; gap:20px;}
+  .footer-links a{text-decoration:none; opacity:0.8;}
+  .footer-links a:hover{opacity:1;}
+
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Insta Health World
+    </div>
+    <nav class="links" aria-label="Primary">
+      <a href="#services">Home Care</a>
+      <a href="#how">How it works</a>
+      <a href="#research">Research Support</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:+918368722386">
+      <span class="dot" aria-hidden="true"></span>
+      +91 83687 22386
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Doorstep healthcare · Available across the city</div>
+      <h1>Healthcare, <em>dispatched</em><br>to your door.</h1>
+      <p class="lede">Doctors, nurses, and ambulances you can call the moment you need them — plus lab tests, injections, and full hospital-grade setup, right at home.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="tel:+918368722386">Call for care now</a>
+        <a class="btn-ghost" href="#services">See all services</a>
+      </div>
+      <div class="hero-footnote">DISPATCH LINE OPEN 24 / 7 &nbsp;·&nbsp; VERIFIED DOCTORS & NURSES ONLY</div>
+    </div>
+
+    <div class="board" role="img" aria-label="Sample live dispatch board showing recent service requests">
+      <div class="board-head">
+        <span>Dispatch Board</span>
+        <span class="live"><span class="dot" aria-hidden="true"></span>Live</span>
+      </div>
+      <div class="board-list">
+        <div class="ticket" style="animation-delay:0.05s">
+          <span class="code">DOC·01</span>
+          <span class="desc">Doctor on call — Sector 12</span>
+          <span class="status enroute">EN ROUTE</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.15s">
+          <span class="code">LAB·06</span>
+          <span class="desc">Sample collection — home visit</span>
+          <span class="status dispatched">DISPATCHED</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.25s">
+          <span class="code">NUR·03</span>
+          <span class="desc">Nurse on call — post-op care</span>
+          <span class="status enroute">EN ROUTE</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.35s">
+          <span class="code">AMB·02</span>
+          <span class="desc">Ambulance — non-emergency transfer</span>
+          <span class="status dispatched">DISPATCHED</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.45s">
+          <span class="code">VID·08</span>
+          <span class="desc">Video consultation — scheduled</span>
+          <span class="status enroute">CONFIRMED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Doorstep services</div>
+      <h2>Every kind of care, brought to your home.</h2>
+      <p>Request any of these directly — a verified professional is dispatched to your address, tracked from confirmation to arrival.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="service-code">DOC · 01</span>
+        <h3>Doctor on call</h3>
+        <p>A qualified physician visits your home for consultation, examination, and treatment.</p>
+        <a class="req" href="tel:+918368722386">Request a doctor</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">AMB · 02</span>
+        <h3>Ambulance on call</h3>
+        <p>Emergency and non-emergency transport, dispatched quickly with trained attendants on board.</p>
+        <a class="req" href="tel:+918368722386">Call an ambulance</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">NUR · 03</span>
+        <h3>Nurse on call</h3>
+        <p>Trained nursing staff for wound care, post-surgical support, elderly care, and daily monitoring.</p>
+        <a class="req" href="tel:+918368722386">Request a nurse</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">HOM · 04</span>
+        <h3>Home care services</h3>
+        <p>Ongoing caregiver support for recovery, chronic illness, or elderly care — built around your schedule.</p>
+        <a class="req" href="tel:+918368722386">Set up home care</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">INJ · 05</span>
+        <h3>Injection at home</h3>
+        <p>Prescribed injections administered safely at home by trained staff — no clinic visit needed.</p>
+        <a class="req" href="tel:+918368722386">Book an injection</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">LAB · 06</span>
+        <h3>Lab test at home</h3>
+        <p>Sample collection at your doorstep, with reports delivered directly to you.</p>
+        <a class="req" href="tel:+918368722386">Book a lab test</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">SET · 07</span>
+        <h3>Hospital setup at home</h3>
+        <p>Hospital-grade beds, oxygen, monitors, and equipment installed at home for serious or long-term care.</p>
+        <a class="req" href="tel:+918368722386">Enquire about setup</a>
+      </div>
+      <div class="service-card">
+        <span class="service-code">VID · 08</span>
+        <h3>Doctor consultation — video call</h3>
+        <p>Speak with a doctor over video when an in-person visit isn't needed. Prescriptions provided digitally.</p>
+        <a class="req" href="tel:+918368722386">Book a video call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How it works</div>
+      <h2>From call to care, in three steps.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Call or book</h3>
+        <p>Call the dispatch line or send your request with your address and what you need.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>A professional is dispatched</h3>
+        <p>We assign a verified doctor, nurse, or ambulance nearest to you and confirm your booking.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Care, at your doorstep</h3>
+        <p>Your care arrives at your home — tracked, on time, and handled with full professionalism.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">For doctors & researchers</div>
+      <h2>Support beyond the bedside.</h2>
+      <p>Alongside patient care, we support clinicians and medical students with the academic work that comes with practicing medicine.</p>
+    </div>
+    <div class="journal-grid">
+      <div class="journal-card">
+        <span class="journal-tag">Case discussion</span>
+        <h3>Case report discussion</h3>
+        <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
+      </div>
+      <div class="journal-card">
+        <span class="journal-tag">Research writing</span>
+        <h3>Proposal writing support</h3>
+        <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
+      </div>
+      <div class="journal-card">
+        <span class="journal-tag">Publication</span>
+        <h3>Manuscript publication support</h3>
+        <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="trust-strip">
+    <div class="trust-item"><strong>24 / 7</strong>Dispatch line open every day, all year</div>
+    <div class="trust-item"><strong>Verified</strong>Every doctor & nurse checked before dispatch</div>
+    <div class="trust-item"><strong>Doorstep</strong>Every service delivered at your address</div>
+    <div class="trust-item"><strong>Confidential</strong>Your records and consultations stay private</div>
+  </div>
+</div>
+
+<section class="cta-section" id="contact">
+  <div class="wrap cta-grid">
+    <div>
+      <div class="section-eyebrow">Get in touch</div>
+      <h2>Need care right now?</h2>
+      <p>Call the dispatch line directly, or reach out below and we'll get back to you.</p>
+
+      <ul class="contact-list">
+        <li>
+          <span class="label">Dispatch line</span>
+          <a class="value" href="tel:+918368722386">+91 83687 22386</a>
+        </li>
+        <li>
+          <span class="label">Email</span>
+          <a class="value" href="mailto:care@instahealthworld.in">care@instahealthworld.in</a>
+        </li>
+        <li>
+          <span class="label">Coverage area</span>
+          <span class="value">[Your city / service area]</span>
+        </li>
+        <li>
+          <span class="label">Address</span>
+          <span class="value">[Your office address]</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cta-panel">
+      <a class="call-btn" href="tel:+918368722386" style="justify-content:center; width:100%;">
+        <span class="dot" aria-hidden="true"></span>
+        Call dispatch now
+      </a>
+      <a class="whatsapp-btn" href="https://wa.me/918368722386" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <p class="note">Response within minutes, every day of the week.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Insta Health World
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#research">Research Support</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>© <span id="year"></span> Insta Health World. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
