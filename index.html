@@ -110,34 +110,43 @@
     position:relative;
     overflow:hidden;
   }
+  .hero-blobs{
+    position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .hero-blobs span{
+    position:absolute; border-radius:50%; filter:blur(60px);
+  }
+  .hero-blobs .b1{width:340px; height:340px; background:var(--teal); opacity:0.16; top:-120px; right:60px;}
+  .hero-blobs .b2{width:260px; height:260px; background:var(--gold); opacity:0.16; bottom:-100px; right:400px;}
+  .hero-blobs .b3{width:220px; height:220px; background:var(--emergency); opacity:0.1; top:120px; left:-80px;}
   .hero-illustration{
     position:absolute;
     left:0; right:0; bottom:0;
     height:100%;
-    color:var(--navy);
-    opacity:0.07;
+    opacity:0.55;
     pointer-events:none;
     z-index:0;
   }
   .hero-illustration svg{
     width:100%; height:100%;
-    fill:currentColor;
   }
   .hero > .wrap, .hero > .ticker-wrap{
     position:relative;
     z-index:1;
   }
   @media (max-width:760px){
-    .hero-illustration{opacity:0.05;}
+    .hero-illustration{opacity:0.35;}
+    .hero-blobs{opacity:0.7;}
   }
   .hero-grid{
     max-width:640px;
   }
   .eyebrow{
     font-family:var(--mono); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
-    color:var(--emergency); font-weight:600; margin-bottom:18px; display:flex; align-items:center; gap:8px;
+    color:var(--emergency); font-weight:600; margin-bottom:18px; display:inline-flex; align-items:center; gap:8px;
+    background:#F4DAD3; padding:7px 14px 7px 10px; border-radius:100px;
   }
-  .eyebrow::before{content:''; width:16px; height:1px; background:var(--emergency); display:inline-block;}
+  .eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--emergency); display:inline-block; animation:pulse 1.6s infinite;}
 
   h1{
     font-family:var(--display); font-weight:600; font-size:clamp(2.4rem, 4.6vw, 3.6rem);
@@ -274,28 +283,52 @@
 
   .service-card{
     background:var(--paper);
-    padding:26px 22px 24px;
+    padding:28px 22px 24px;
     position:relative;
-    transition:background 0.15s;
+    transition:background 0.18s, transform 0.18s, box-shadow 0.18s;
+    z-index:0;
   }
   .service-grid.alt-bg .service-card{background:var(--paper-dim);}
-  .service-card:hover{background:var(--teal-soft);}
-  .service-code{
-    font-family:var(--mono); font-size:0.74rem; color:var(--emergency); font-weight:600;
-    letter-spacing:0.04em; margin-bottom:14px; display:block;
+  .service-card:hover{
+    background:var(--paper);
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px -14px rgba(19,31,27,0.28);
+    z-index:2;
   }
+
+  .icon-badge{
+    width:46px; height:46px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .icon-badge svg{width:23px; height:23px;}
+  .badge-teal{background:var(--teal-soft); color:var(--teal);}
+  .badge-emergency{background:#F4DAD3; color:var(--emergency);}
+  .badge-gold{background:#F3E6C9; color:#9C7522;}
+  .badge-navy{background:#DCE2EA; color:var(--navy);}
+  .badge-gold-dark{background:rgba(201,154,62,0.18); color:var(--gold);}
+
   .service-card h3{
     font-family:var(--display); font-size:1.16rem; font-weight:600; margin:0 0 8px; letter-spacing:-0.005em;
   }
   .service-card p{
-    font-size:0.9rem; color:var(--ink-soft); margin:0 0 16px; line-height:1.5;
+    font-size:0.9rem; color:var(--ink-soft); margin:0 0 18px; line-height:1.5;
   }
+  .card-actions{display:flex; align-items:center; gap:12px;}
   .service-card .req{
     font-size:0.82rem; font-weight:600; text-decoration:none; color:var(--navy);
     display:inline-flex; align-items:center; gap:5px;
   }
   .service-card .req::after{content:'→'; transition:transform 0.15s;}
   .service-card:hover .req::after{transform:translateX(3px);}
+  .req-wa{
+    width:32px; height:32px; border-radius:50%;
+    background:#25D366; color:#fff;
+    display:inline-flex; align-items:center; justify-content:center;
+    flex:none; transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .req-wa svg{width:16px; height:16px;}
+  .req-wa:hover{transform:scale(1.08); box-shadow:0 6px 14px -4px rgba(37,211,102,0.55);}
 
   /* ---------- HOW IT WORKS ---------- */
   .steps{
@@ -326,11 +359,17 @@
   .journal-card{
     background:var(--navy); color:var(--paper);
     padding:30px 26px;
-    border-radius:3px;
+    border-radius:6px;
+    transition:transform 0.18s, box-shadow 0.18s;
   }
+  .journal-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 34px -16px rgba(28,43,62,0.6);
+  }
+  .journal-card .icon-badge{margin-bottom:18px;}
   .journal-tag{
     font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:16px; display:block;
+    color:var(--gold); margin-bottom:10px; display:block;
   }
   .journal-card h3{
     font-family:var(--display); font-weight:600; font-size:1.18rem; margin:0 0 10px;
@@ -349,6 +388,10 @@
     padding:22px 24px;
     border-right:1px solid var(--line);
     font-family:var(--mono); font-size:0.86rem; color:var(--ink-soft);
+    display:flex; align-items:flex-start; gap:14px;
+  }
+  .trust-item svg{
+    width:26px; height:26px; flex:none; color:var(--teal); margin-top:2px;
   }
   .trust-item:last-child{border-right:none;}
   .trust-item strong{display:block; font-family:var(--body); font-size:1.4rem; color:var(--ink); font-weight:700; margin-bottom:4px;}
@@ -427,10 +470,15 @@
 </header>
 
 <section class="hero">
+  <div class="hero-blobs" aria-hidden="true">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+  </div>
   <div class="hero-illustration" aria-hidden="true">
     <svg viewBox="0 0 1400 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
       <!-- Hospital building -->
-      <g transform="translate(60,60)" opacity="1">
+      <g transform="translate(60,60)" fill="var(--navy)">
         <rect x="0" y="120" width="230" height="180" rx="2"/>
         <rect x="40" y="70" width="150" height="50" rx="2"/>
         <rect x="95" y="0" width="40" height="70" rx="2"/>
@@ -451,7 +499,7 @@
       </g>
 
       <!-- Doctor figure -->
-      <g transform="translate(370,110)">
+      <g transform="translate(370,110)" fill="var(--teal)">
         <circle cx="45" cy="30" r="26"/>
         <path d="M0,230 C0,150 10,110 45,105 C80,110 90,150 90,230 Z"/>
         <rect x="38" y="95" width="14" height="34" fill="var(--paper)"/>
@@ -460,30 +508,30 @@
       </g>
 
       <!-- Nurse figure -->
-      <g transform="translate(500,120)">
+      <g transform="translate(500,120)" fill="var(--gold)">
         <circle cx="40" cy="28" r="24"/>
         <path d="M0,220 C0,145 10,105 40,100 C70,105 80,145 80,220 Z"/>
         <rect x="25" y="150" width="30" height="30" rx="3" fill="var(--paper)"/>
-        <rect x="36" y="158" width="8" height="14" fill="currentColor"/>
-        <rect x="32" y="162" width="16" height="6" fill="currentColor"/>
+        <rect x="36" y="158" width="8" height="14" fill="var(--gold)"/>
+        <rect x="32" y="162" width="16" height="6" fill="var(--gold)"/>
       </g>
 
       <!-- Ambulance -->
-      <g transform="translate(760,190)">
+      <g transform="translate(760,190)" fill="var(--emergency)">
         <rect x="0" y="20" width="180" height="70" rx="6"/>
         <rect x="140" y="0" width="70" height="90" rx="6"/>
         <rect x="150" y="15" width="40" height="30" rx="2" fill="var(--paper)"/>
-        <circle cx="45" cy="100" r="18"/>
-        <circle cx="165" cy="100" r="18"/>
+        <circle cx="45" cy="100" r="18" fill="var(--navy)"/>
+        <circle cx="165" cy="100" r="18" fill="var(--navy)"/>
         <rect x="55" y="35" width="40" height="10" fill="var(--paper)"/>
         <rect x="70" y="20" width="10" height="40" fill="var(--paper)"/>
       </g>
 
       <!-- Lab flask -->
-      <g transform="translate(1030,140)">
+      <g transform="translate(1030,140)" fill="var(--teal)">
         <path d="M40,0 L40,60 L5,150 C0,165 10,175 25,175 L95,175 C110,175 120,165 115,150 L80,60 L80,0 Z"/>
         <rect x="30" y="0" width="60" height="14" fill="var(--paper)"/>
-        <path d="M22,120 L98,120 L115,150 C120,165 110,175 95,175 L25,175 C10,175 0,165 5,150 Z" fill="var(--teal-line, currentColor)" opacity="0.5"/>
+        <path d="M22,120 L98,120 L115,150 C120,165 110,175 95,175 L25,175 C10,175 0,165 5,150 Z" fill="var(--gold)" opacity="0.7"/>
       </g>
     </svg>
   </div>
@@ -563,44 +611,108 @@
   <div class="wrap">
     <div class="service-grid">
       <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><circle cx="18" cy="16" r="3"/><path d="M14 9v3a4 4 0 0 0 4 4"/></svg>
+        </div>
         <h3>Doctor on call</h3>
         <p>A qualified physician visits your home for consultation, examination, and treatment.</p>
-        <a class="req" href="tel:+918368722386">Request a doctor</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20request%20a%20Doctor%20on%20call." target="_blank" rel="noopener" aria-label="Book Doctor on call via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="14" height="9" rx="1.5"/><path d="M16 11h4l2 3v3h-2"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 10v4M5 12h4"/></svg>
+        </div>
         <h3>Ambulance on call</h3>
         <p>Emergency and non-emergency transport, dispatched quickly with trained attendants on board.</p>
-        <a class="req" href="tel:+918368722386">Call an ambulance</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%20need%20an%20Ambulance." target="_blank" rel="noopener" aria-label="Book Ambulance via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
         <h3>Nurse on call</h3>
         <p>Trained nursing staff for wound care, post-surgical support, elderly care, and daily monitoring.</p>
-        <a class="req" href="tel:+918368722386">Request a nurse</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20request%20a%20Nurse%20on%20call." target="_blank" rel="noopener" aria-label="Book Nurse on call via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/><path d="M12 17c-2-1.5-3-2.5-3-4a2 2 0 0 1 3-1.7A2 2 0 0 1 15 13c0 1.5-1 2.5-3 4Z"/></svg>
+        </div>
         <h3>Home care services</h3>
         <p>Ongoing caregiver support for recovery, chronic illness, or elderly care — built around your schedule.</p>
-        <a class="req" href="tel:+918368722386">Set up home care</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20set%20up%20Home%20Care%20services." target="_blank" rel="noopener" aria-label="Book Home care via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 16 8"/><path d="M17.5 5.5 19 4l1 1-1.5 1.5"/><path d="M15 7l3 3-8 8H6v-4l8-8Z"/><path d="M4 20l2-2"/></svg>
+        </div>
         <h3>Injection at home</h3>
         <p>Prescribed injections administered safely at home by trained staff — no clinic visit needed.</p>
-        <a class="req" href="tel:+918368722386">Book an injection</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20book%20an%20Injection%20at%20home." target="_blank" rel="noopener" aria-label="Book Injection via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v13a3 3 0 0 0 6 0V2"/><path d="M8 2h8"/><path d="M9 12h6"/></svg>
+        </div>
         <h3>Lab test at home</h3>
         <p>Sample collection at your doorstep, with reports delivered directly to you.</p>
-        <a class="req" href="tel:+918368722386">Book a lab test</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Lab%20test%20at%20home." target="_blank" rel="noopener" aria-label="Book Lab test via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h5v5"/><path d="M3 15h18v3"/><path d="M13 9h6a2 2 0 0 1 2 2v4"/><circle cx="7" cy="7" r="2"/></svg>
+        </div>
         <h3>Hospital setup at home</h3>
         <p>Hospital-grade beds, oxygen, monitors, and equipment installed at home for serious or long-term care.</p>
-        <a class="req" href="tel:+918368722386">Enquire about setup</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Hospital%20setup%20at%20home." target="_blank" rel="noopener" aria-label="Enquire about Hospital setup via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3Z"/></svg>
+        </div>
         <h3>Doctor consultation — video call</h3>
         <p>Speak with a doctor over video when an in-person visit isn't needed. Prescriptions provided digitally.</p>
-        <a class="req" href="tel:+918368722386">Book a video call</a>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Call now</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Video%20consultation." target="_blank" rel="noopener" aria-label="Book Video consultation via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -615,16 +727,25 @@
     </div>
     <div class="journal-grid">
       <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </div>
         <span class="journal-tag">Case discussion</span>
         <h3>Case report discussion</h3>
         <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
       </div>
       <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4Z"/><path d="M14 6l3 3"/></svg>
+        </div>
         <span class="journal-tag">Research writing</span>
         <h3>Proposal writing support</h3>
         <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
       </div>
       <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2Z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2Z"/></svg>
+        </div>
         <span class="journal-tag">Publication</span>
         <h3>Manuscript publication support</h3>
         <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
@@ -635,10 +756,22 @@
 
 <div class="wrap">
   <div class="trust-strip">
-    <div class="trust-item"><strong>24 / 7</strong>Dispatch line open every day, all year</div>
-    <div class="trust-item"><strong>Verified</strong>Every doctor & nurse checked before dispatch</div>
-    <div class="trust-item"><strong>Doorstep</strong>Every service delivered at your address</div>
-    <div class="trust-item"><strong>Confidential</strong>Your records and consultations stay private</div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <div><strong>24 / 7</strong>Dispatch line open every day, all year</div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><strong>Verified</strong>Every doctor & nurse checked before dispatch</div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>
+      <div><strong>Doorstep</strong>Every service delivered at your address</div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <div><strong>Confidential</strong>Your records and consultations stay private</div>
+    </div>
   </div>
 </div>
 
