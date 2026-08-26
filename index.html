@@ -109,10 +109,7 @@
     border-bottom:1px solid var(--line);
   }
   .hero-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
-  }
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    max-width:640px;
   }
   .eyebrow{
     font-family:var(--mono); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
@@ -365,46 +362,12 @@
     <div>
       <div class="eyebrow">Doorstep healthcare · Available across the city</div>
       <h1>Healthcare, <em>dispatched</em><br>to your door.</h1>
-      <p class="lede">Doctors, nurses, and ambulances you can call the moment you need them — plus lab tests, injections, and full hospital-grade setup, right at home.</p>
+      <p class="lede">Doctors, Nurses, and Ambulances you can call the moment you need them — plus Lab Tests, Injections, and full Hospital-Grade Setup, right at home.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="tel:+918368722386">Call for care now</a>
         <a class="btn-ghost" href="#services">See all services</a>
       </div>
       <div class="hero-footnote">DISPATCH LINE OPEN 24 / 7 &nbsp;·&nbsp; VERIFIED DOCTORS & NURSES ONLY</div>
-    </div>
-
-    <div class="board" role="img" aria-label="Sample live dispatch board showing recent service requests">
-      <div class="board-head">
-        <span>Dispatch Board</span>
-        <span class="live"><span class="dot" aria-hidden="true"></span>Live</span>
-      </div>
-      <div class="board-list">
-        <div class="ticket" style="animation-delay:0.05s">
-          <span class="code">DOC·01</span>
-          <span class="desc">Doctor on call — Sector 12</span>
-          <span class="status enroute">EN ROUTE</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.15s">
-          <span class="code">LAB·06</span>
-          <span class="desc">Sample collection — home visit</span>
-          <span class="status dispatched">DISPATCHED</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.25s">
-          <span class="code">NUR·03</span>
-          <span class="desc">Nurse on call — post-op care</span>
-          <span class="status enroute">EN ROUTE</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.35s">
-          <span class="code">AMB·02</span>
-          <span class="desc">Ambulance — non-emergency transfer</span>
-          <span class="status dispatched">DISPATCHED</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.45s">
-          <span class="code">VID·08</span>
-          <span class="desc">Video consultation — scheduled</span>
-          <span class="status enroute">CONFIRMED</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -471,7 +434,50 @@
   </div>
 </section>
 
-<section class="section alt" id="how">
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px;">
+      <div class="section-eyebrow">Right now</div>
+      <h2>Live dispatch board.</h2>
+      <p>A look at the kind of activity moving through our dispatch line at any given moment.</p>
+    </div>
+    <div class="board" role="img" aria-label="Sample live dispatch board showing recent service requests" style="max-width:640px;">
+      <div class="board-head">
+        <span>Dispatch Board</span>
+        <span class="live"><span class="dot" aria-hidden="true"></span>Live</span>
+      </div>
+      <div class="board-list">
+        <div class="ticket" style="animation-delay:0.05s">
+          <span class="code">DOC·01</span>
+          <span class="desc">Doctor on call — Sector 12</span>
+          <span class="status enroute">EN ROUTE</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.15s">
+          <span class="code">LAB·06</span>
+          <span class="desc">Sample collection — home visit</span>
+          <span class="status dispatched">DISPATCHED</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.25s">
+          <span class="code">NUR·03</span>
+          <span class="desc">Nurse on call — post-op care</span>
+          <span class="status enroute">EN ROUTE</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.35s">
+          <span class="code">AMB·02</span>
+          <span class="desc">Ambulance — non-emergency transfer</span>
+          <span class="status dispatched">DISPATCHED</span>
+        </div>
+        <div class="ticket" style="animation-delay:0.45s">
+          <span class="code">VID·08</span>
+          <span class="desc">Video consultation — scheduled</span>
+          <span class="status enroute">CONFIRMED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow">How it works</div>
@@ -547,15 +553,18 @@
         </li>
         <li>
           <span class="label">Email</span>
-          <a class="value" href="mailto:care@instahealthworld.in">care@instahealthworld.in</a>
+          <span class="value" style="display:flex; flex-direction:column; gap:2px; align-items:flex-end;">
+            <a href="mailto:care@instahealthworld.in">care@instahealthworld.in</a>
+            <a href="mailto:instahealthworldpvtltd@gmail.com" style="font-size:0.92rem; font-weight:500; opacity:0.85;">instahealthworldpvtltd@gmail.com</a>
+          </span>
         </li>
         <li>
           <span class="label">Coverage area</span>
-          <span class="value">[Your city / service area]</span>
+          <span class="value">Delhi NCR</span>
         </li>
         <li>
           <span class="label">Address</span>
-          <span class="value">[Your office address]</span>
+          <span class="value">Sector 143, Noida, Uttar Pradesh</span>
         </li>
       </ul>
     </div>
