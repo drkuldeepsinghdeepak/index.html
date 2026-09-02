@@ -446,6 +446,64 @@
 
   /* focus visibility */
   a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+
+  .agency-section{
+    background:var(--navy);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    padding-top:72px;
+    padding-bottom:76px;
+  }
+  .agency-section::before{
+    content:'';
+    position:absolute; top:-140px; right:-100px;
+    width:420px; height:420px; border-radius:50%;
+    background:var(--gold); opacity:0.14; filter:blur(10px);
+  }
+  .agency-section::after{
+    content:'';
+    position:absolute; bottom:-160px; left:-120px;
+    width:360px; height:360px; border-radius:50%;
+    background:var(--teal); opacity:0.16; filter:blur(10px);
+  }
+  .agency-section .wrap{position:relative; z-index:1;}
+  .agency-section .section-eyebrow{
+    background:rgba(201,154,62,0.2); color:var(--gold);
+  }
+  .agency-section h2{color:var(--paper); font-size:clamp(1.9rem,3.4vw,2.6rem);}
+  .agency-section .section-head p{color:rgba(238,240,229,0.78); font-size:1.06rem; max-width:60ch;}
+  .agency-ribbon{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:0.74rem; font-weight:700; letter-spacing:0.08em;
+    color:var(--navy); background:var(--gold);
+    padding:6px 14px; border-radius:100px; margin-bottom:20px;
+  }
+  .agency-section .service-grid{
+    background:rgba(238,240,229,0.14);
+    border-color:rgba(238,240,229,0.14);
+  }
+  .agency-section .service-card{
+    background:#1F3049;
+  }
+  .agency-section .service-card:hover{
+    background:#25384F;
+    box-shadow:0 18px 34px -16px rgba(0,0,0,0.5);
+  }
+  .agency-section .service-card h3{color:var(--paper);}
+  .agency-section .service-card p{color:rgba(238,240,229,0.68);}
+  .agency-section .service-card .req{color:var(--gold);}
+  .agency-section .icon-badge{background:rgba(201,154,62,0.18); color:var(--gold);}
+  .agency-note{
+    margin-top:36px;
+    background:rgba(238,240,229,0.08); color:var(--paper);
+    border:1px solid rgba(238,240,229,0.18);
+    padding:22px 26px;
+    border-radius:6px;
+    max-width:760px;
+  }
+  .agency-note p{margin:0; font-size:0.94rem; line-height:1.6; color:rgba(238,240,229,0.88);}
+  .agency-note strong{color:var(--gold); font-weight:600;}
 </style>
 </head>
 <body>
@@ -459,6 +517,7 @@
     <nav class="links" aria-label="Primary">
       <a href="#how">How it works</a>
       <a href="#services">Doorstep Care</a>
+      <a href="#agency">Agency Support</a>
       <a href="#research">Research Support</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -468,6 +527,112 @@
     </a>
   </div>
 </header>
+<section class="section agency-section" id="agency">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="agency-ribbon">★ EXPANDING FOCUS AREA</div>
+      <div class="section-eyebrow-row">
+        <span class="section-eyebrow">For agencies & organizations</span>
+        <span class="badge-247" style="background:var(--gold); color:var(--navy);">INDIA GROUND SUPPORT</span>
+      </div>
+      <h2>Your team on the ground, anywhere in India.</h2>
+      <p>Whether you're an international organization without a local base, or an Indian agency that needs extra hands on the ground — we set up, staff, and run the operations, so your team can focus on the programme, not the logistics.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Project implementation</h3>
+        <p>On-ground execution of your programme, activities, and field operations across India, managed end to end.</p>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss your project</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20support%20implementing%20a%20project%20on%20ground%20in%20India." target="_blank" rel="noopener" aria-label="Enquire about project implementation via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>HR & hiring support</h3>
+        <p>Recruiting, onboarding, and managing local staff and field teams on your behalf, so you have the right people in place fast.</p>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss hiring needs</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20HR%20and%20hiring%20support%20in%20India." target="_blank" rel="noopener" aria-label="Enquire about HR support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg>
+        </div>
+        <h3>Office & admin setup</h3>
+        <p>Setting up a local office, admin systems, and day-to-day operational support, so you have a functioning India base quickly.</p>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss office setup</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20office%20and%20admin%20setup%20support%20in%20India." target="_blank" rel="noopener" aria-label="Enquire about office setup via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/><path d="M3 12a9 9 0 0 1 9-9"/></svg>
+        </div>
+        <h3>Day-to-day field operations</h3>
+        <p>Ongoing coordination and monitoring of on-ground activities and field teams, keeping your programme running smoothly day to day.</p>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss field support</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20support%20managing%20day-to-day%20field%20operations%20in%20India." target="_blank" rel="noopener" aria-label="Enquire about field operations via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="agency-note">
+      <p><strong>Already working with agencies like this.</strong> Whether you're an international organization entering India without a local team, or an Indian agency that needs a reliable ground partner for a specific project or state, we can step in — from hiring to daily operations — so you can focus on delivering your programme.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section research-highlight" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">For doctors & researchers</div>
+      <h2>Support beyond the bedside.</h2>
+      <p>Alongside patient care, we support clinicians and medical students with the academic work that comes with practicing medicine.</p>
+    </div>
+    <div class="journal-grid">
+      <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </div>
+        <span class="journal-tag">Case discussion</span>
+        <h3>Case report discussion</h3>
+        <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
+      </div>
+      <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4Z"/><path d="M14 6l3 3"/></svg>
+        </div>
+        <span class="journal-tag">Research writing</span>
+        <h3>Proposal writing support</h3>
+        <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
+      </div>
+      <div class="journal-card">
+        <div class="icon-badge badge-gold-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2Z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2Z"/></svg>
+        </div>
+        <span class="journal-tag">Publication</span>
+        <h3>Manuscript publication support</h3>
+        <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="hero">
   <div class="hero-blobs" aria-hidden="true">
@@ -717,44 +882,6 @@
     </div>
   </div>
 </section>
-
-<section class="section research-highlight" id="research">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">For doctors & researchers</div>
-      <h2>Support beyond the bedside.</h2>
-      <p>Alongside patient care, we support clinicians and medical students with the academic work that comes with practicing medicine.</p>
-    </div>
-    <div class="journal-grid">
-      <div class="journal-card">
-        <div class="icon-badge badge-gold-dark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        </div>
-        <span class="journal-tag">Case discussion</span>
-        <h3>Case report discussion</h3>
-        <p>Structured review and discussion of clinical case reports — useful for teaching rounds, documentation, or preparing a case for publication.</p>
-      </div>
-      <div class="journal-card">
-        <div class="icon-badge badge-gold-dark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4Z"/><path d="M14 6l3 3"/></svg>
-        </div>
-        <span class="journal-tag">Research writing</span>
-        <h3>Proposal writing support</h3>
-        <p>Help structuring and refining research proposals, from study design through to a submission-ready document.</p>
-      </div>
-      <div class="journal-card">
-        <div class="icon-badge badge-gold-dark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2Z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2Z"/></svg>
-        </div>
-        <span class="journal-tag">Publication</span>
-        <h3>Manuscript publication support</h3>
-        <p>Guidance through drafting, formatting, and submitting manuscripts to medical journals.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
   <div class="trust-strip">
     <div class="trust-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
@@ -774,45 +901,6 @@
     </div>
   </div>
 </div>
-
-<section class="section alt" id="live">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:32px;">
-      <div class="section-eyebrow">Right now</div>
-      <h2>Live dispatch board.</h2>
-      <p>A look at the kind of activity moving through our dispatch line at any given moment.</p>
-    </div>
-    <div class="board" role="img" aria-label="Sample live dispatch board showing recent service requests" style="max-width:640px;">
-      <div class="board-head">
-        <span>Dispatch Board</span>
-        <span class="live"><span class="dot" aria-hidden="true"></span>Live</span>
-      </div>
-      <div class="board-list">
-        <div class="ticket" style="animation-delay:0.05s">
-          <span class="desc">Doctor on call — Sector 12</span>
-          <span class="status enroute">EN ROUTE</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.15s">
-          <span class="desc">Sample collection — home visit</span>
-          <span class="status dispatched">DISPATCHED</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.25s">
-          <span class="desc">Nurse on call — post-op care</span>
-          <span class="status enroute">EN ROUTE</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.35s">
-          <span class="desc">Ambulance — non-emergency transfer</span>
-          <span class="status dispatched">DISPATCHED</span>
-        </div>
-        <div class="ticket" style="animation-delay:0.45s">
-          <span class="desc">Video consultation — scheduled</span>
-          <span class="status enroute">CONFIRMED</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <section class="cta-section" id="contact">
   <div class="wrap cta-grid">
