@@ -61,14 +61,24 @@
   }
   .brand{
     display:flex; align-items:center; gap:10px;
-    font-family:var(--display); font-weight:600; font-size:1.28rem;
-    letter-spacing:-0.01em;
+  }
+  .brand-text{display:flex; flex-direction:column; gap:2px;}
+  .brand-name{
+    font-family:var(--display); font-weight:600; font-size:1.22rem;
+    letter-spacing:-0.01em; line-height:1.1;
+  }
+  .brand-ids{
+    font-family:var(--mono); font-size:0.66rem; color:var(--ink-soft); opacity:0.75;
+    letter-spacing:0.01em; white-space:nowrap;
   }
   .brand-mark-svg{
     width:32px; height:32px;
     flex:none;
   }
   .footer .brand-mark-svg{width:44px; height:44px;}
+  @media (max-width:640px){
+    .brand-ids{display:none;}
+  }
 
   nav.links{display:flex; gap:28px; font-size:0.94rem; font-weight:500;}
   nav.links a{text-decoration:none; opacity:0.78; transition:opacity 0.15s;}
@@ -716,7 +726,10 @@
         <circle cx="60" cy="60" r="21" fill="var(--paper)"/>
         <text x="60" y="67" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="22" fill="var(--navy)">IHW</text>
       </svg>
-      Insta Health World
+      <div class="brand-text">
+        <div class="brand-name">Insta Health World</div>
+        <div class="brand-ids">GSTIN: 09AAFCI3796M1ZT &nbsp;·&nbsp; CIN: U85320UP2019PTC120431</div>
+      </div>
     </div>
     <nav class="links" aria-label="Primary">
       <a href="#agency">Ground Support</a>
@@ -1023,6 +1036,139 @@
         <div class="card-actions">
           <a class="req" href="tel:+918368722386">Discuss survey needs</a>
           <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20data%20collection%20or%20field%20survey%20support." target="_blank" rel="noopener" aria-label="Enquire about data collection support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-head">
+      <span class="section-eyebrow" style="background:rgba(201,154,62,0.2); color:var(--gold);">Travel, logistics & event support</span>
+      <h3 class="subsection-title">Every arrangement, handled.</h3>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M8 18v2M16 18v2"/></svg>
+        </div>
+        <h3>Admin support for your office</h3>
+        <p>Day-to-day admin help once your office is running — coordination, filing, and general office management.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We assign admin support to handle recurring office tasks and requests.</li>
+            <li>We coordinate with vendors, service providers, and building management on your behalf.</li>
+            <li>We keep things running so your team can focus on programme work, not office logistics.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss admin support</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20ongoing%20admin%20support%20for%20our%20office." target="_blank" rel="noopener" aria-label="Enquire about office admin support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-2l2-5a2 2 0 0 1 2-1h6a2 2 0 0 1 2 1l2 5v2a2 2 0 0 1-2 2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>
+        </div>
+        <h3>Vehicle arrangement for travel</h3>
+        <p>Cars and drivers arranged for local travel, field visits, or airport transfers, whenever your team needs them.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Tell us the dates, locations, and number of people travelling.</li>
+            <li>We arrange a reliable vehicle and driver for the duration you need.</li>
+            <li>We handle changes or extensions directly, so you don't have to.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Arrange a vehicle</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20we%20need%20a%20vehicle%20arranged%20for%20travel." target="_blank" rel="noopener" aria-label="Enquire about vehicle arrangement via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l6-2 5-8 7-7-1.5-1.5-7 7-8 5-2 6z"/><path d="M15 9l-2.5 2.5"/></svg>
+        </div>
+        <h3>Flight ticket arrangements</h3>
+        <p>Flight bookings managed for your team's travel to and within India, on the schedule your programme needs.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Share travel dates, routes, and traveller details with us.</li>
+            <li>We source and book the best available options within your budget.</li>
+            <li>We handle changes, cancellations, or rebooking if plans shift.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Book flights</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20we%20need%20flight%20tickets%20arranged." target="_blank" rel="noopener" aria-label="Enquire about flight ticket arrangements via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v13"/><path d="M3 12h18"/><path d="M7 21v-4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/><path d="M7 8h.01M17 8h.01"/></svg>
+        </div>
+        <h3>Hotel booking support</h3>
+        <p>Hotel bookings arranged for your team, visiting staff, or event guests — matched to location and budget.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Tell us the city, dates, and number of guests.</li>
+            <li>We shortlist and book suitable hotels within your budget.</li>
+            <li>We handle check-in coordination and any changes needed.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Book hotels</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20we%20need%20hotel%20bookings%20arranged." target="_blank" rel="noopener" aria-label="Enquire about hotel booking support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/><path d="M8 15h3"/></svg>
+        </div>
+        <h3>Meeting hall booking</h3>
+        <p>Venue booking for meetings, workshops, or trainings — matched to your group size, location, and setup needs.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Tell us the date, city, group size, and any AV or seating requirements.</li>
+            <li>We shortlist and book a suitable venue within your budget.</li>
+            <li>We confirm setup details with the venue ahead of your event.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Book a venue</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20we%20need%20a%20meeting%20hall%20booked." target="_blank" rel="noopener" aria-label="Enquire about meeting hall booking via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Meeting & event organising</h3>
+        <p>End-to-end coordination for meetings and events — invites, logistics, vendors, and on-ground execution on the day.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We plan the event around your goals, guest list, and budget.</li>
+            <li>We coordinate venue, catering, travel, and materials in advance.</li>
+            <li>We manage the day itself, so your team can focus on the content, not the logistics.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Plan an event</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20we%20need%20support%20organising%20a%20meeting%20or%20event." target="_blank" rel="noopener" aria-label="Enquire about meeting and event organising via WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
           </a>
         </div>
