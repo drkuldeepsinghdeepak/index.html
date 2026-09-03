@@ -64,17 +64,11 @@
     font-family:var(--display); font-weight:600; font-size:1.28rem;
     letter-spacing:-0.01em;
   }
-  .brand-mark{
-    width:30px; height:30px; border-radius:50%;
-    background:var(--navy);
-    position:relative;
+  .brand-mark-svg{
+    width:32px; height:32px;
     flex:none;
   }
-  .brand-mark::before, .brand-mark::after{
-    content:''; position:absolute; background:var(--paper);
-  }
-  .brand-mark::before{ width:14px; height:2.4px; top:50%; left:50%; transform:translate(-50%,-50%); }
-  .brand-mark::after{ width:2.4px; height:14px; top:50%; left:50%; transform:translate(-50%,-50%); }
+  .footer .brand-mark-svg{width:44px; height:44px;}
 
   nav.links{display:flex; gap:28px; font-size:0.94rem; font-weight:500;}
   nav.links a{text-decoration:none; opacity:0.78; transition:opacity 0.15s;}
@@ -470,15 +464,46 @@
   .whatsapp-btn:hover{background:rgba(238,240,229,0.08);}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:34px 0; border-top:1px solid var(--line);}
-  .footer-inner{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
-    font-size:0.82rem; color:var(--ink-soft);
+  footer{padding:56px 0 0; border-top:1px solid var(--line-strong); background:var(--paper-dim);}
+  .footer-top{
+    display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap;
+    padding-bottom:40px;
   }
-  footer .brand{font-size:1rem;}
-  .footer-links{display:flex; gap:20px;}
-  .footer-links a{text-decoration:none; opacity:0.8;}
-  .footer-links a:hover{opacity:1;}
+  .footer-brand{display:flex; gap:16px; align-items:flex-start; max-width:420px;}
+  .footer-brand-name{
+    font-family:var(--display); font-weight:600; font-size:1.08rem; color:var(--ink); margin-bottom:4px;
+  }
+  .footer-brand-ids{
+    font-family:var(--mono); font-size:0.76rem; color:var(--ink-soft); opacity:0.85;
+    margin-bottom:8px;
+  }
+  .footer-brand-tag{
+    font-size:0.84rem; color:var(--ink-soft); line-height:1.5;
+  }
+  .footer-cols{display:flex; gap:56px; flex-wrap:wrap;}
+  .footer-col-title{
+    font-family:var(--mono); font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:12px; font-weight:600;
+  }
+  .footer-col a{
+    display:block; text-decoration:none; color:var(--ink); opacity:0.82;
+    font-size:0.9rem; margin-bottom:9px;
+  }
+  .footer-col a:hover{opacity:1;}
+  .footer-legal-row{
+    font-size:0.86rem; color:var(--ink-soft); margin-bottom:9px;
+    display:flex; gap:8px;
+  }
+  .footer-legal-row span{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink-soft); opacity:0.7; min-width:52px; padding-top:1px;
+  }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    padding:20px 0; border-top:1px solid var(--line);
+    font-size:0.8rem; color:var(--ink-soft);
+  }
+  .footer-legal-name{font-family:var(--mono); font-size:0.74rem; opacity:0.7;}
 
   ::selection{background:var(--gold); color:var(--ink);}
 
@@ -551,7 +576,79 @@
     max-width:760px;
   }
   .agency-note p{margin:0; font-size:0.94rem; line-height:1.6; color:rgba(238,240,229,0.88);}
-  .agency-note strong{color:var(--gold); font-weight:600;}  /* ---------- LOCK SCREEN ---------- */
+  .agency-note strong{color:var(--gold); font-weight:600;}
+
+  .coworker-section{
+    background:var(--teal-soft);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .coworker-section h2{max-width:20ch;}
+  .coworker-section .section-head p{max-width:62ch;}
+  .coworker-note{
+    margin-top:36px;
+    display:flex; align-items:flex-start; gap:16px;
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    padding:20px 24px;
+    border-radius:6px;
+    max-width:760px;
+  }
+  .coworker-note p{margin:0; font-size:0.94rem; line-height:1.6; color:var(--ink-soft);}
+  .coworker-note strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- ABOUT / VALUE CARDS ---------- */
+  .value-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:26px;
+    margin-top:12px;
+  }
+  @media (max-width:900px){ .value-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .value-grid{grid-template-columns:1fr;} }
+  .value-card h3{
+    font-family:var(--display); font-size:1.08rem; font-weight:600; margin:0 0 8px;
+  }
+  .value-card p{
+    font-size:0.88rem; color:var(--ink-soft); line-height:1.55; margin:0;
+  }
+
+  /* ---------- SECTOR STRIP ---------- */
+  .sector-strip{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+    padding:34px 0;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .sector-strip-label{
+    font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); font-weight:600;
+    margin-right:4px;
+  }
+  .sector-chip{
+    font-family:var(--mono); font-size:0.8rem; color:var(--navy);
+    background:var(--teal-soft);
+    padding:7px 14px; border-radius:100px;
+    border:1px solid rgba(28,43,62,0.08);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;}
+  .faq-item{
+    border-bottom:1px solid var(--line-strong);
+    padding:20px 0;
+  }
+  .faq-item summary{
+    list-style:none; cursor:pointer;
+    font-family:var(--display); font-weight:600; font-size:1.02rem;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+'; font-family:var(--mono); font-size:1.3rem; color:var(--teal);
+    flex:none; transition:transform 0.15s;
+  }
+  .faq-item[open] summary::after{content:'−';}
+  .faq-content{margin-top:14px;}
+  .faq-content p{margin:0; font-size:0.92rem; color:var(--ink-soft); line-height:1.6;}
+
+  /* ---------- LOCK SCREEN ---------- */
   .lock-section{
     background:var(--paper-dim);
     border-bottom:1px solid var(--line-strong);
@@ -607,19 +704,28 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
+      <svg class="brand-mark-svg" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="var(--navy)" stroke-width="3"/>
+        <g opacity="0.5" stroke="var(--teal)" stroke-width="1.4" fill="none">
+          <circle cx="60" cy="60" r="30"/>
+          <ellipse cx="60" cy="60" rx="12" ry="30"/>
+          <line x1="30" y1="60" x2="90" y2="60"/>
+          <path d="M33,46 Q60,58 87,46"/>
+          <path d="M33,74 Q60,62 87,74"/>
+        </g>
+        <circle cx="60" cy="60" r="21" fill="var(--paper)"/>
+        <text x="60" y="67" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="22" fill="var(--navy)">IHW</text>
+      </svg>
       Insta Health World
     </div>
     <nav class="links" aria-label="Primary">
       <a href="#agency">Ground Support</a>
+      <a href="#coworker">Co-Worker</a>
+      <a href="#about">About</a>
       <a href="#research">Research Support</a>
-      <a href="#more-services">More Services</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="call-btn" href="tel:+918368722386">
-      <span class="dot" aria-hidden="true"></span>
-      +91 83687 22386
-    </a>
   </div>
 </header>
 <section class="section agency-section" id="agency">
@@ -832,11 +938,264 @@
       </div>
     </div>
 
+    <div class="subsection-head">
+      <span class="section-eyebrow" style="background:rgba(201,154,62,0.2); color:var(--gold);">Programme & compliance support</span>
+      <h3 class="subsection-title">Keeping your programme accountable.</h3>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l3 3 3-3"/><path d="M12 3v18"/><circle cx="12" cy="8" r="4"/></svg>
+        </div>
+        <h3>Monitoring & evaluation (M&E)</h3>
+        <p>Tracking outcomes against your programme's indicators, and turning field data into evidence you can report on.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We set up indicators and data collection processes aligned with your M&E framework.</li>
+            <li>We track progress in the field and consolidate it into regular reports.</li>
+            <li>We flag gaps or risks early, so course correction happens before it's a problem.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss M&E support</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20Monitoring%20%26%20Evaluation%20support." target="_blank" rel="noopener" aria-label="Enquire about M&E support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 13l2 2 4-4"/></svg>
+        </div>
+        <h3>Donor & grant compliance</h3>
+        <p>Keeping your documentation, spending, and reporting aligned with donor or government requirements.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We review your donor or grant agreement and map out the compliance requirements.</li>
+            <li>We help maintain the documentation and records needed for audits or reviews.</li>
+            <li>We prepare compliance reports on the schedule your funder requires.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss compliance needs</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20donor%20and%20grant%20compliance%20support." target="_blank" rel="noopener" aria-label="Enquire about donor compliance support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+        </div>
+        <h3>Training & capacity building</h3>
+        <p>Workshops and training sessions for local staff, partners, or community health workers on your programme.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We design training content around your programme's specific goals and audience.</li>
+            <li>We deliver sessions in person or over video, in English or regional languages as needed.</li>
+            <li>We document attendance and outcomes for your reporting needs.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss training needs</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20training%20and%20capacity%20building%20support." target="_blank" rel="noopener" aria-label="Enquire about training support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/><path d="M12 15v-3"/><circle cx="12" cy="9" r="0.5" fill="currentColor"/></svg>
+        </div>
+        <h3>Data collection & field surveys</h3>
+        <p>Structured surveys and field data collection, run by trained local staff and delivered in a clean, usable format.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>We design or adapt survey tools to match your research or programme questions.</li>
+            <li>We recruit and train local enumerators to collect data in the field.</li>
+            <li>We clean and deliver the data in a format ready for your analysis.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Discuss survey needs</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20our%20agency%20needs%20data%20collection%20or%20field%20survey%20support." target="_blank" rel="noopener" aria-label="Enquire about data collection support via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="agency-note">
       <p><strong>Already working with agencies like this.</strong> Whether you're an international organization entering India without a local team, or an Indian agency that needs a reliable ground partner for a specific project or state, we can step in — from hiring to daily operations — so you can focus on delivering your programme.</p>
     </div>
   </div>
 </section>
+
+<section class="section coworker-section" id="coworker">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="agency-ribbon" style="background:var(--gold); color:var(--navy);">★ FOR INDIVIDUALS & PROFESSIONALS</div>
+      <div class="section-eyebrow-row">
+        <span class="section-eyebrow" style="background:rgba(46,111,94,0.16); color:var(--teal);">Your Co-Worker</span>
+      </div>
+      <h2>Struggling to keep up? We'll be your Co-Worker.</h2>
+      <p>The pace of work has changed fast, and AI tools have changed it again. Not everyone has the time, tools, or headspace to keep up — and that shouldn't cost you your job. Tell us what you need done, and we'll do it. Your confidentiality is maintained at the highest level, always.</p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <h3>Research & compilation</h3>
+        <p>Background research, data gathering, and summarizing information into something you can actually use.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>You tell us the topic or question — as loosely or specifically as you like.</li>
+            <li>We research, verify, and compile it into a clear format for you.</li>
+            <li>You review and we refine, until it's exactly what you needed.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Ask for this</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20a%20Co-Worker%20for%20research%20%26%20compilation." target="_blank" rel="noopener" aria-label="Ask for research help via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+        </div>
+        <h3>Documents, reports & decks</h3>
+        <p>Write-ups, reports, and presentations — drafted, formatted, and polished, ready to send or present.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Share your notes, data, or even a rough voice note — whatever form you have it in.</li>
+            <li>We structure and write it properly, in your tone if you'd like.</li>
+            <li>You get a clean, ready-to-use document or deck back.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Ask for this</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20a%20Co-Worker%20for%20documents%2Freports%2Fdecks." target="_blank" rel="noopener" aria-label="Ask for document help via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <h3>Scheduling & coordination</h3>
+        <p>Calendar management, follow-ups, and coordinating with people on your behalf, so things don't fall through.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Give us access to what you need managed, or just tell us who to coordinate with.</li>
+            <li>We handle the back-and-forth, scheduling, and reminders.</li>
+            <li>You get a clean summary of what's confirmed, without the admin work.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Ask for this</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20a%20Co-Worker%20for%20scheduling%20%26%20coordination." target="_blank" rel="noopener" aria-label="Ask for scheduling help via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        </div>
+        <h3>Whatever else you need done</h3>
+        <p>Not every task fits a category. If it's reasonable and legal, describe it and we'll tell you honestly if we can help.</p>
+        <details class="how-details">
+          <summary>How we do this</summary>
+          <ul class="how-content">
+            <li>Message us with what you're stuck on, however small or unusual.</li>
+            <li>We tell you honestly whether it's something we can take on.</li>
+            <li>If yes, we agree on the details and get started — no long onboarding process.</li>
+          </ul>
+        </details>
+        <div class="card-actions">
+          <a class="req" href="tel:+918368722386">Ask us anything</a>
+          <a class="req-wa" href="https://wa.me/918368722386?text=Hi%2C%20I%27d%20like%20a%20Co-Worker%20for%20a%20task%20I%20need%20help%20with." target="_blank" rel="noopener" aria-label="Ask for other help via WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2.1.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.8 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.9-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="coworker-note">
+      <div class="icon-badge badge-teal" style="margin-bottom:0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+      <p><strong>Confidentiality, always.</strong> What you share with your Co-Worker stays between us. We don't discuss your work, your data, or your identity with anyone else — no exceptions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow-row">
+        <span class="section-eyebrow">Who we are</span>
+        <span class="badge-247" style="background:var(--gold); color:var(--navy);">7+ YEARS OF EXPERIENCE</span>
+      </div>
+      <h2>A local partner, built for accountability.</h2>
+      <p>Insta Health World Private Limited works at the intersection of healthcare delivery and on-ground programme support — helping organizations get things done in India without needing a large local footprint of their own.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="icon-badge badge-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>
+        </div>
+        <h3>Local, on the ground</h3>
+        <p>Based in Delhi NCR, with the ability to coordinate activities and staff across states — so your programme has real local presence, not a remote liaison.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-badge badge-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Responsive by design</h3>
+        <p>A dedicated point of contact for your organization, reachable by call or WhatsApp — no ticketing systems or long response chains.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-badge badge-emergency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Healthcare & development crossover</h3>
+        <p>Rooted in healthcare delivery, with the operational discipline to support health, nutrition, and development programmes on the ground.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-badge badge-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <h3>Confidential & accountable</h3>
+        <p>Clear reporting lines and documentation on every engagement, so your organization always knows the status of its programme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="sector-strip">
+    <span class="sector-strip-label">Sectors we support:</span>
+    <span class="sector-chip">Public Health</span>
+    <span class="sector-chip">Nutrition</span>
+    <span class="sector-chip">International Development</span>
+    <span class="sector-chip">NGOs & CSR</span>
+    <span class="sector-chip">Medical Research</span>
+    <span class="sector-chip">Government Programmes</span>
+  </div>
+</div>
 
 <section class="section research-highlight" id="research">
   <div class="wrap">
@@ -894,6 +1253,69 @@
           </ul>
         </details>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How we work</div>
+      <h2>From first call to full handover.</h2>
+      <p>A straightforward process, whether you're setting up a new project or bringing in support for an existing one.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Discovery call</h3>
+        <p>We talk through your programme, timelines, and what kind of ground support you actually need.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Scoping & proposal</h3>
+        <p>We put together a clear scope of work and cost, so there are no surprises once we start.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>On-ground execution</h3>
+        <p>We staff, set up, and run the agreed activities, keeping you updated on the schedule you prefer.</p>
+      </div>
+      <div class="step" style="border-right:none;">
+        <div class="step-num">04</div>
+        <h3>Reporting & handover</h3>
+        <p>Regular reporting throughout, and a clean handover or transition whenever your engagement ends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Common questions</div>
+      <h2>Frequently asked questions.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you work with international organizations that have no presence in India?</summary>
+        <div class="faq-content"><p>Yes — this is one of our core areas of work. We can act as your on-ground team for hiring, office setup, and day-to-day operations, so you don't need to establish a full local entity to start working in India.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can you support a project in a specific state or region?</summary>
+        <div class="faq-content"><p>Yes. We're based in Delhi NCR and can coordinate staff and activities across states depending on your programme's needs — get in touch with the specific location and we'll confirm feasibility.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you only work with health-focused programmes?</summary>
+        <div class="faq-content"><p>Health is where we're rooted, but our ground support, HR, admin, and reporting services apply to development, research, and NGO/CSR programmes more broadly — not just clinical or healthcare work.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How quickly can you start on a new engagement?</summary>
+        <div class="faq-content"><p>It depends on scope — a discovery call is the fastest way to get a clear answer for your specific timeline. Reach out by call or WhatsApp and we'll respond quickly.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can you handle just one part of this — say, only HR, or only reporting?</summary>
+        <div class="faq-content"><p>Yes, our services aren't all-or-nothing. You can bring us in for a single piece of work, like report preparation or a dashboard build, without committing to full on-ground operations support.</p></div>
+      </details>
     </div>
   </div>
 </section>
@@ -1114,6 +1536,10 @@
           <span class="label">Address</span>
           <span class="value">Sector 143, Noida, Uttar Pradesh</span>
         </li>
+        <li>
+          <span class="label">GSTIN</span>
+          <span class="value" style="font-family:var(--mono); font-size:0.9rem;">09AAFCI3796M1ZT</span>
+        </li>
       </ul>
     </div>
 
@@ -1129,17 +1555,56 @@
 </section>
 
 <footer>
-  <div class="wrap footer-inner">
-    <div class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
-      Insta Health World
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <svg class="brand-mark-svg brand-mark-seal" viewBox="0 0 140 140" aria-hidden="true">
+        <circle cx="70" cy="70" r="64" fill="none" stroke="var(--navy)" stroke-width="2.5"/>
+        <circle cx="70" cy="70" r="58" fill="none" stroke="var(--navy)" stroke-width="0.75" opacity="0.4"/>
+        <g opacity="0.5" stroke="var(--teal)" stroke-width="1.4" fill="none">
+          <circle cx="70" cy="70" r="34"/>
+          <ellipse cx="70" cy="70" rx="14" ry="34"/>
+          <line x1="36" y1="70" x2="104" y2="70"/>
+          <path d="M39,54 Q70,68 101,54"/>
+          <path d="M39,86 Q70,72 101,86"/>
+        </g>
+        <circle cx="70" cy="70" r="25" fill="var(--paper)"/>
+        <text x="70" y="76" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="24" fill="var(--navy)">IHW</text>
+        <text x="70" y="90" text-anchor="middle" font-family="var(--mono)" font-size="6.5" letter-spacing="1" fill="var(--gold)">PRIVATE LTD</text>
+        <path id="footerLogoArc" d="M14,70 A56,56 0 0 1 126,70" fill="none"/>
+        <text font-family="var(--mono)" font-size="7.5" letter-spacing="2.4" fill="var(--navy)">
+          <textPath href="#footerLogoArc" startOffset="50%" text-anchor="middle">INSTA HEALTH WORLD</textPath>
+        </text>
+      </svg>
+      <div>
+        <div class="footer-brand-name">Insta Health World Private Limited</div>
+        <div class="footer-brand-ids">GSTIN: 09AAFCI3796M1ZT &nbsp;·&nbsp; CIN: U85320UP2019PTC120431</div>
+        <div class="footer-brand-tag">On-ground programme support &amp; healthcare delivery — 7+ years of experience</div>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="#agency">Ground Support</a>
-      <a href="#research">Research Support</a>
-      <a href="#contact">Contact</a>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">Site</div>
+        <a href="#agency">Ground Support</a>
+        <a href="#coworker">Co-Worker</a>
+        <a href="#about">About</a>
+        <a href="#research">Research Support</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Registered details</div>
+        <div class="footer-legal-row"><span>GSTIN</span>09AAFCI3796M1ZT</div>
+        <div class="footer-legal-row"><span>PAN</span>AAFCI3796M</div>
+        <div class="footer-legal-row"><span>CIN</span>U85320UP2019PTC120431</div>
+        <div class="footer-legal-row"><span>Address</span>Sector 143, Noida, Uttar Pradesh</div>
+      </div>
     </div>
-    <div>© <span id="year"></span> Insta Health World. All rights reserved.</div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <div>© <span id="year"></span> Insta Health World Private Limited. All rights reserved.</div>
+    <div class="footer-legal-name">Legal name: INSTAHEALTH WORLD PRIVATE LIMITED</div>
   </div>
 </footer>
 
