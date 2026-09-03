@@ -61,6 +61,7 @@
   }
   .brand{
     display:flex; align-items:center; gap:10px;
+    text-decoration:none; color:inherit;
   }
   .brand-text{display:flex; flex-direction:column; gap:2px;}
   .brand-name{
@@ -711,9 +712,9 @@
 </head>
 <body>
 
-<header class="nav">
+<header class="nav" id="top">
   <div class="wrap nav-inner">
-    <div class="brand">
+    <a class="brand" href="#top" aria-label="Insta Health World — Home">
       <svg class="brand-mark-svg" viewBox="0 0 120 120" aria-hidden="true">
         <circle cx="60" cy="60" r="56" fill="none" stroke="var(--navy)" stroke-width="3"/>
         <g opacity="0.5" stroke="var(--teal)" stroke-width="1.4" fill="none">
@@ -730,8 +731,9 @@
         <div class="brand-name">Insta Health World</div>
         <div class="brand-ids">GSTIN: 09AAFCI3796M1ZT &nbsp;·&nbsp; CIN: U85320UP2019PTC120431</div>
       </div>
-    </div>
+    </a>
     <nav class="links" aria-label="Primary">
+      <a href="#top">Home</a>
       <a href="#agency">Ground Support</a>
       <a href="#coworker">Co-Worker</a>
       <a href="#about">About</a>
